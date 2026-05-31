@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Personal Planner OS - Finance Edition</title>
+<title>Personal Planner OS - Responsive Finance</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -35,18 +35,22 @@
     --c-finance:#ff7043;
     --c-finance-soft:rgba(255,112,67,0.12);
   }
+  
+  /* RESET E BLOCCO OVERFLOW ORIZZONTALE */
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased}
-  body{padding:24px;background:
-    radial-gradient(1400px 700px at 50% -10%, rgba(197,151,121,0.07), transparent 70%),
+  html,body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased; overflow-x: hidden;}
+  body{padding:16px;background:
+    radial-gradient(1200px 600px at 50% -10%, rgba(197,151,121,0.05), transparent 70%),
     var(--bg);}
-  .app{max-width:1400px;margin:0 auto}
+  
+  /* Larghezza fluida proporzionata allo schermo */
+  .app{max-width:100%; width:100%; margin:0 auto}
 
   /* Header */
-  header.topbar{ display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;gap:16px;flex-wrap:wrap; }
+  header.topbar{ display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;gap:16px;flex-wrap:wrap; }
   .brand{display:flex;align-items:center;gap:12px}
-  .logo{ width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#c59779,#70523e);display:grid;place-items:center;color:#0d0e12;font-weight:700;box-shadow:0 4px 20px rgba(197,151,121,.2); }
-  .brand h1{font-size:20px;font-weight:600;letter-spacing:-.02em}
+  .logo{ width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#c59779,#70523e);display:grid;place-items:center;color:#0d0e12;font-weight:700;box-shadow:0 4px 20px rgba(197,151,121,.2); }
+  .brand h1{font-size:18px;font-weight:600;letter-spacing:-.02em}
   .brand .sub{font-size:12px;color:var(--text-dim);}
 
   .auth-area{display:flex;align-items:center;gap:12px}
@@ -56,7 +60,7 @@
   .dot{width:8px;height:8px;border-radius:50%;background:var(--success);box-shadow:0 0 8px var(--success)}
 
   /* Buttons */
-  .btn{ appearance:none;border:none;cursor:pointer;padding:10px 18px;border-radius:var(--radius-sm);font-family:inherit;font-size:14px;font-weight:500;transition:all .2s ease;display:inline-flex;align-items:center;gap:8px; }
+  .btn{ appearance:none;border:none;cursor:pointer;padding:8px 16px;border-radius:var(--radius-sm);font-family:inherit;font-size:13px;font-weight:500;transition:all .2s ease;display:inline-flex;align-items:center;gap:8px; }
   .btn-primary{background:var(--accent);color:#1a1410}
   .btn-primary:hover{background:var(--accent-strong);transform:translateY(-1px);box-shadow:0 6px 20px rgba(197,151,121,.25)}
   .btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none;}
@@ -67,98 +71,98 @@
   .btn-danger-ghost:hover{background:rgba(240,98,146,0.15);border-color:var(--danger)}
   .btn-icon{padding:8px 12px;background:var(--card);color:var(--text);border:1px solid var(--border)}
 
-  /* Layout principal Grid */
-  .main-grid{display:grid;grid-template-columns:1fr 420px;gap:24px}
-  @media (max-width:1100px){.main-grid{grid-template-columns:1fr}}
+  /* GRID RIPROGETTATA: FLUIDA E SENZA TRBORDAMENTI */
+  .main-grid{display:grid;grid-template-columns:1fr 360px;gap:18px; width:100%;}
+  @media (max-width:1150px){.main-grid{grid-template-columns:1fr}}
 
   /* Calendari Principali */
-  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
-  .card h2{font-size:12px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px; width:100%; overflow:hidden;}
+  .card h2{font-size:11px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
 
-  .cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;gap:12px;flex-wrap:wrap;}
-  .cal-header h3{font-size:24px;font-weight:600;letter-spacing:-.02em;text-transform:capitalize}
-  .cal-controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
+  .cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;}
+  .cal-header h3{font-size:20px;font-weight:600;letter-spacing:-.02em;text-transform:capitalize}
+  .cal-controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
   .cal-nav, .view-switcher{display:flex;gap:4px;background:var(--card-2);padding:4px;border-radius:var(--radius-sm);border:1px solid var(--border);}
-  .view-switcher .btn { padding: 6px 14px; font-size: 13px; }
+  .view-switcher .btn { padding: 6px 12px; font-size: 12px; }
 
-  .weekdays{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:8px}
-  .weekdays div{text-align:center;font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em;padding:4px 0;}
+  .weekdays{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:6px}
+  .weekdays div{text-align:center;font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em;padding:2px 0;}
 
-  .days-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
-  .day-cell{ background:var(--card-2);border:1px solid var(--border);border-radius:var(--radius-sm);min-height:110px;padding:8px;cursor:pointer;transition:all .15s ease;display:flex;flex-direction:column;gap:4px; }
-  .day-cell:hover:not(.empty){border-color:var(--accent);transform:translateY(-2px)}
+  /* Celle compattate per schermi desktop standard */
+  .days-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px; width:100%;}
+  .day-cell{ background:var(--card-2);border:1px solid var(--border);border-radius:var(--radius-sm);min-height:90px;padding:6px;cursor:pointer;transition:all .15s ease;display:flex;flex-direction:column;gap:4px;overflow:hidden; }
+  .day-cell:hover:not(.empty){border-color:var(--accent);transform:translateY(-1px)}
   .day-cell.empty{background:transparent;border-color:transparent;cursor:default}
-  .day-cell.today{border-color:var(--accent);background:linear-gradient(180deg,rgba(197,151,121,.06),var(--card-2))}
+  .day-cell.today{border-color:var(--accent);background:linear-gradient(180deg,rgba(197,151,121,.04),var(--card-2))}
   .day-cell.today .day-num{color:var(--accent);font-weight:700}
   .day-cell.selected{outline:2px solid var(--accent);outline-offset:-2px}
-  .day-num{font-size:13px;font-weight:500;}
+  .day-num{font-size:12px;font-weight:500;}
   
-  /* Timeline Settimanale */
-  .days-grid.view-week { grid-template-columns: 60px repeat(7, 1fr); position: relative; max-height: 650px; overflow-y: auto; padding-right: 4px; }
-  .time-col { display: flex; flex-direction: column; justify-content: space-between; color: var(--text-dim); font-size: 11px; padding-top: 35px; border-right: 1px solid var(--border); }
-  .time-slot-label { height: 40px; text-align: right; padding-right: 8px; }
-  .week-day-column { display: flex; flex-direction: column; background: var(--card-2); border: 1px solid var(--border); border-radius: var(--radius-sm); min-height: 600px; position: relative; padding: 4px; gap: 4px; }
+  /* Timeline Settimanale compattata */
+  .days-grid.view-week { grid-template-columns: 50px repeat(7,1fr); position: relative; max-height: 550px; overflow-y: auto; }
+  .time-col { display: flex; flex-direction: column; justify-content: space-between; color: var(--text-dim); font-size: 10px; padding-top: 30px; border-right: 1px solid var(--border); }
+  .time-slot-label { height: 40px; text-align: right; padding-right: 6px; }
+  .week-day-column { display: flex; flex-direction: column; background: var(--card-2); border: 1px solid var(--border); border-radius: var(--radius-sm); min-height: 500px; position: relative; padding: 4px; gap: 4px; min-width: 0; }
   .week-day-column.today { border-color: var(--accent); background: rgba(197,151,121,0.02); }
-  .week-column-header { text-align: center; font-size: 12px; font-weight: 600; padding: 6px 0; border-bottom: 1px solid var(--border); margin-bottom: 6px; color: var(--accent-strong); }
+  .week-column-header { text-align: center; font-size: 11px; font-weight: 600; padding: 4px 0; border-bottom: 1px solid var(--border); margin-bottom: 4px; color: var(--accent-strong); }
   
   /* Pillole ed Estetica Categorie */
-  .event-pill{ font-size:11px;padding:5px 8px;border-radius:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-left:3px solid var(--accent);background:var(--accent-soft);color:var(--accent-strong);cursor:pointer; }
-  .event-pill:hover { filter: brightness(1.2); transform: translateY(-1px); }
+  .event-pill{ font-size:10px; padding:3px 6px; border-radius:4px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; border-left:2px solid var(--accent); background:var(--accent-soft); color:var(--accent-strong); cursor:pointer; }
+  .event-pill:hover { filter: brightness(1.2); }
   .event-pill.work { border-left-color: var(--c-work); background: var(--c-work-soft); color: var(--c-work); }
   .event-pill.fitness { border-left-color: var(--c-fit); background: var(--c-fit-soft); color: var(--c-fit); }
   .event-pill.food { border-left-color: var(--c-food); background: var(--c-food-soft); color: var(--c-food); }
   .event-pill.personal { border-left-color: var(--c-pers); background: var(--c-pers-soft); color: var(--c-pers); }
   .event-pill.finance { border-left-color: var(--c-finance); background: var(--c-finance-soft); color: var(--c-finance); font-weight: 500; }
   
-  .week-day-column .event-pill { position: relative; margin-bottom: 2px; white-space: normal; height: auto; min-height: 38px; display: flex; flex-direction: column; justify-content: center; }
+  .week-day-column .event-pill { position: relative; margin-bottom: 2px; white-space: normal; min-height: 32px; display: flex; flex-direction: column; justify-content: center; }
 
   /* Vista Agenda */
-  .days-grid.view-agenda { display: flex; flex-direction: column; gap: 12px; }
-  .agenda-row { display: flex; background: var(--card-2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px; gap: 16px; }
-  .agenda-date-box { min-width: 75px; text-align: center; background: var(--card); border: 1px solid var(--border); padding: 10px; border-radius: 8px; color: var(--accent-strong); font-weight: 600; }
-  .agenda-row-events { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+  .days-grid.view-agenda { display: flex; flex-direction: column; gap: 10px; }
+  .agenda-row { display: flex; background: var(--card-2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px; gap: 12px; }
+  .agenda-date-box { min-width: 70px; text-align: center; background: var(--card); border: 1px solid var(--border); padding: 8px; border-radius: 6px; color: var(--accent-strong); font-weight: 600; font-size: 13px; }
+  .agenda-row-events { flex: 1; display: flex; flex-direction: column; gap: 6px; }
 
   /* Sidebar Layout */
-  .sidebar-layout { display: flex; flex-direction: column; gap: 24px; }
-  .form-card{ display:flex;flex-direction:column;gap:14px; }
-  .form-group{ display:flex;flex-direction:column;gap:6px }
-  .form-group label{ font-size:11px;color:var(--text-dim);font-weight:600;text-transform:uppercase;letter-spacing:.06em }
-  .form-group input{ background:var(--card-2);border:1px solid var(--border);color:var(--text);padding:11px 14px;border-radius:var(--radius-sm);font-family:inherit;font-size:14px;transition:border-color .15s ease;color-scheme:dark; }
+  .sidebar-layout { display: flex; flex-direction: column; gap: 18px; width: 100%; min-width: 0; }
+  .form-card{ display:flex;flex-direction:column;gap:12px; }
+  .form-group{ display:flex;flex-direction:column;gap:4px }
+  .form-group label{ font-size:10px;color:var(--text-dim);font-weight:600;text-transform:uppercase;letter-spacing:.06em }
+  .form-group input{ background:var(--card-2);border:1px solid var(--border);color:var(--text);padding:9px 12px;border-radius:var(--radius-sm);font-family:inherit;font-size:13px;transition:border-color .15s ease;color-scheme:dark; }
   .form-group input:focus{ outline:none;border-color:var(--accent) }
   
   /* Liste Interne / Box Giornalieri */
-  .agenda-section, .finance-section { background: var(--card-2); border-radius: var(--radius-sm); padding: 14px; margin-top: 8px; display: flex; flex-direction: column; gap: 10px; border: 1px solid var(--border); }
+  .agenda-section, .finance-section { background: var(--card-2); border-radius: var(--radius-sm); padding: 12px; margin-top: 4px; display: flex; flex-direction: column; gap: 8px; border: 1px solid var(--border); }
   .finance-section { border-color: rgba(255,112,67,0.15); background: linear-gradient(180deg, rgba(255,112,67,0.02), var(--card-2)); }
-  .agenda-title { font-size: 13px; font-weight: 600; color: var(--text); display: flex; justify-content: space-between; }
-  .agenda-item { display: flex; align-items: center; justify-content: space-between; background: var(--card); padding: 10px; border-radius: 8px; border: 1px solid var(--border); gap: 12px;}
+  .agenda-title { font-size: 12px; font-weight: 600; color: var(--text); display: flex; justify-content: space-between; }
+  .agenda-item { display: flex; align-items: center; justify-content: space-between; background: var(--card); padding: 8px; border-radius: 6px; border: 1px solid var(--border); gap: 10px;}
   .agenda-item-details { display: flex; flex-direction: column; min-width: 0; flex: 1; }
-  .agenda-item-title { font-size: 13px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; cursor: pointer; }
+  .agenda-item-title { font-size: 12px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; cursor: pointer; }
   .agenda-item-title:hover { color: var(--accent); }
   .agenda-item-time { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
-  .no-events-text { font-size: 13px; color: var(--text-dim); font-style: italic; text-align: center; padding: 12px 0; }
+  .no-events-text { font-size: 12px; color: var(--text-dim); font-style: italic; text-align: center; padding: 8px 0; }
 
   /* Live Analytics & Widgets Finanziari */
-  .metrics-card { display: flex; flex-direction: column; gap: 16px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
-  .metric-progress-group { display: flex; flex-direction: column; gap: 6px; }
-  .metric-header { display: flex; justify-content: space-between; font-size: 12px; font-weight: 500; }
+  .metrics-card { display: flex; flex-direction: column; gap: 12px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
+  .metric-progress-group { display: flex; flex-direction: column; gap: 4px; }
+  .metric-header { display: flex; justify-content: space-between; font-size: 11px; font-weight: 500; }
   .metric-label { display: flex; align-items: center; gap: 6px; }
-  .metric-dot { width: 8px; height: 8px; border-radius: 50%; }
-  .progress-track { width: 100%; height: 6px; background: var(--card-2); border-radius: 99px; overflow: hidden; border: 1px solid rgba(255,255,255,0.02); }
+  .metric-dot { width: 6px; height: 6px; border-radius: 50%; }
+  .progress-track { width: 100%; height: 5px; background: var(--card-2); border-radius: 99px; overflow: hidden; }
   .progress-bar { height: 100%; width: 0%; border-radius: 99px; transition: width 0.6s ease; }
   
-  /* Widget Budget di Spesa */
-  .finance-stats { display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid var(--border); margin-top: 4px; }
-  .finance-amount { font-size: 18px; font-weight: 700; color: var(--c-finance); }
+  .finance-stats { display: flex; align-items: center; justify-content: space-between; padding-top: 8px; border-top: 1px solid var(--border); margin-top: 2px; }
+  .finance-amount { font-size: 16px; font-weight: 700; color: var(--c-finance); }
 
-  .status{ font-size:13px;padding:10px 12px;border-radius:var(--radius-sm);display:none;border:1px solid; margin-top: 10px;}
+  .status{ font-size:12px;padding:8px 10px;border-radius:var(--radius-sm);display:none;border:1px solid; margin-top: 8px;}
   .status.visible{display:block}
   .status.error{background:rgba(240,98,142,0.06);border-color:rgba(240,98,142,0.2);color:var(--danger)}
   .status.success{background:rgba(77,182,172,0.06);border-color:rgba(77,182,172,0.2);color:var(--success)}
 
-  .locked-overlay{ display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px;gap:16px;min-height:350px; }
-  .locked-overlay p{color:var(--text-dim);font-size:14px;line-height:1.6}
+  .locked-overlay{ display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px 14px;gap:12px;min-height:300px; }
+  .locked-overlay p{color:var(--text-dim);font-size:13px;line-height:1.6}
   .hidden{display:none !important}
-  .spinner{ display:inline-block;width:14px;height:14px;border:2px solid transparent;border-top-color:currentColor;border-radius:50%;animation:spin .8s linear infinite; }
+  .spinner{ display:inline-block;width:12px;height:12px;border:2px solid transparent;border-top-color:currentColor;border-radius:50%;animation:spin .8s linear infinite; }
   @keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
@@ -268,7 +272,7 @@
       </aside>
 
       <div class="metrics-card">
-        <h2 style="font-size:12px; font-weight:600; color:var(--text-dim); text-transform:uppercase; letter-spacing:.08em;">Life Balance Analytics</h2>
+        <h2 style="font-size:11px; font-weight:600; color:var(--text-dim); text-transform:uppercase; letter-spacing:.08em;">Life Balance Analytics</h2>
         
         <div class="metric-progress-group">
           <div class="metric-header">
@@ -381,7 +385,7 @@
     } catch(e){ showStatus('Errore scaricamento dati Cloud.', 'error'); }
   }
 
-  // ===== MOTORE DI CATEGORIZZAZIONE AVANZATO (INCLUSO FINANCE) =====
+  // ===== MOTORE DI CATEGORIZZAZIONE AVANZATO =====
   function getPillClass(title) {
     const t = title.toLowerCase();
     if (t.includes('€') || t.includes('euro') || t.includes('pagamento') || t.includes('bolletta') || t.includes('scadenza')) return 'finance';
@@ -392,15 +396,14 @@
     return '';
   }
 
-  // ===== ESTRATTORE MATEMATICO DEL BUDGET (€) =====
+  // ===== ESTRATTORE MATEMATICO DEL BUDGET =====
   function extractAmount(title) {
-    // Espressione regolare per cercare numeri vicini al simbolo €
     const match = title.match(/(\d+[\.,]?\d*)\s*€|€\s*(\d+[\.,]?\d*)/);
     if (match) {
       const numStr = match[1] || match[2];
       return parseFloat(numStr.replace(',', '.'));
     }
-    return 0; // Se non rileva cifre restituisce 0
+    return 0;
   }
 
   // ===== RENDER LOGIC =====
@@ -472,6 +475,7 @@
     for (let i = 0; i < 7; i++) {
       const d = new Date(monday); d.setDate(monday.getDate() + i);
       const col = document.createElement('div'); col.className = 'week-day-column';
+      const today = new Date();
       if (d.getDate() === today.getDate() && d.getMonth() === today.getMonth() && d.getFullYear() === today.getFullYear()) col.classList.add('today');
 
       const colHeader = document.createElement('div'); colHeader.className = 'week-column-header';
@@ -488,7 +492,7 @@
         dayEvents.forEach(ev => {
           const pill = document.createElement('div'); pill.className = `event-pill ${getPillClass(ev.summary || '')}`;
           const timeLabel = ev.start?.dateTime ? new Date(ev.start.dateTime).toLocaleTimeString('it-IT', {hour:'2-digit', minute:'2-digit'}) : 'All-Day';
-          pill.innerHTML = `<b style="font-size:10px; opacity:0.8">${timeLabel}</b><span style="margin-top:2px">${ev.summary}</span>`;
+          pill.innerHTML = `<b style="font-size:9px; opacity:0.8">${timeLabel}</b><span style="margin-top:1px">${ev.summary}</span>`;
           pill.addEventListener('click', (e) => { e.stopPropagation(); setupEditEvent(ev); });
           col.appendChild(pill);
         });
@@ -512,7 +516,7 @@
     });
 
     if(sortedEvents.length === 0) {
-      grid.innerHTML = '<div class="no-events-text" style="font-size:15px; margin-top:40px;">Timeline pulita in questo mese.</div>'; return;
+      grid.innerHTML = '<div class="no-events-text" style="font-size:14px; margin-top:30px;">Timeline pulita in questo mes.</div>'; return;
     }
 
     const groups = {};
@@ -555,63 +559,45 @@
   }
   cancelEditBtn.addEventListener('click', resetForm);
 
-  // ===== LIVE METRICS, FINANCES & SIDEBAR ENGINE =====
+  // ===== ANALYTICS & SIDEBAR CALCULATIONS =====
   function updateStatsAndAgenda() {
-    // 1. Processamento e rendering del Box Scadenze Economiche Mensili
     const financeContainer = $('financeItemsContainer');
     financeContainer.innerHTML = '';
     
-    // Filtriamo tutti gli eventi economici del mese visualizzato
     const currentMonthFinances = events.filter(ev => {
       const s = ev.start?.dateTime || ev.start?.date; if (!s) return false;
-      const dt = new Date(s);
-      return dt.getMonth() === viewMonth && dt.getFullYear() === viewYear && getPillClass(ev.summary || '') === 'finance';
+      return new Date(s).getMonth() === viewMonth && new Date(s).getFullYear() === viewYear && getPillClass(ev.summary || '') === 'finance';
     });
 
     let totalUscite = 0;
 
     if (currentMonthFinances.length === 0) {
-      financeContainer.innerHTML = '<p class="no-events-text">Nessuna spesa o bolletta questo mese.</p>';
+      financeContainer.innerHTML = '<p class="no-events-text">Nessun pagamento questo mese.</p>';
     } else {
       currentMonthFinances.forEach(ev => {
-        const importo = extractAmount(ev.summary || '');
-        totalUscite += importo;
+        const importo = extractAmount(ev.summary || ''); totalUscite += importo;
 
-        const fItem = document.createElement('div');
-        fItem.className = 'agenda-item';
+        const fItem = document.createElement('div'); fItem.className = 'agenda-item';
         fItem.style.borderLeft = '3px solid var(--c-finance)';
 
-        const fDetails = document.createElement('div');
-        fDetails.className = 'agenda-item-details';
-
-        const fTitle = document.createElement('span');
-        fTitle.className = 'agenda-item-title';
-        fTitle.textContent = ev.summary;
+        const fDetails = document.createElement('div'); fDetails.className = 'agenda-item-details';
+        const fTitle = document.createElement('span'); fTitle.className = 'agenda-item-title'; fTitle.textContent = ev.summary;
         fTitle.addEventListener('click', () => setupEditEvent(ev));
 
         const fDateStr = new Date(ev.start?.dateTime || ev.start?.date).toLocaleDateString('it-IT', {day: 'numeric', month: 'short'});
-        const fTime = document.createElement('span');
-        fTime.className = 'agenda-item-time';
-        fTime.textContent = `📅 Scadenza: ${fDateStr}`;
+        const fTime = document.createElement('span'); fTime.className = 'agenda-item-time'; fTime.textContent = `Scadenza: ${fDateStr}`;
 
-        fDetails.appendChild(fTitle);
-        fDetails.appendChild(fTime);
-        fItem.appendChild(fDetails);
-        financeContainer.appendChild(fItem);
+        fDetails.appendChild(fTitle); fDetails.appendChild(fTime); fItem.appendChild(fDetails); financeContainer.appendChild(fItem);
       });
     }
 
-    // Aggiorna l'indicatore delle Uscite Totali in euro
     $('totalFinanceAmount').textContent = `${totalUscite.toLocaleString('it-IT', {minimumFractionDigits: 2, maximumFractionDigits: 2})} €`;
 
-    // 2. Calcolo metriche Life Balance tradizionali
     if (events.length === 0) { resetMetrics(); return; }
     let workCount = 0, fitCount = 0, restCount = 0;
     events.forEach(ev => {
       const cls = getPillClass(ev.summary || '');
-      if (cls === 'work') workCount++;
-      else if (cls === 'fitness') fitCount++;
-      else if (cls === 'personal' || cls === 'food') restCount++;
+      if (cls === 'work') workCount++; else if (cls === 'fitness') fitCount++; else if (cls === 'personal' || cls === 'food') restCount++;
     });
 
     const total = workCount + fitCount + restCount || 1;
@@ -623,10 +609,9 @@
     $('fitProgressBar').style.width = `${fitPct}%`; $('fitPctLabel').textContent = `${fitPct}%`;
     $('persProgressBar').style.width = `${restPct}%`; $('persPctLabel').textContent = `${restPct}%`;
 
-    // 3. Compilazione Agenda Focus Giornaliero
     if (!selectedDay) return;
     $('selectedDayLabel').textContent = `Dettaglio del Giorno: ${selectedDay} ${MONTH_NAMES_IT[viewMonth].substring(0,3)}`;
-    $('weatherLabel').textContent = workPct > 55 ? '⚠️ Alta Densità Lavoro' : '🧠 Flusso Ottimizzato';
+    $('weatherLabel').textContent = workPct > 55 ? '⚠️ Alta Densità' : '🧠 Ottimizzato';
 
     const container = $('agendaItemsContainer'); container.innerHTML = '';
     const dayEvents = events.filter(ev => {
@@ -644,7 +629,7 @@
       itemTitle.textContent = ev.summary || '(Senza Titolo)'; itemTitle.addEventListener('click', () => setupEditEvent(ev));
 
       const itemTime = document.createElement('span'); itemTime.className = 'agenda-item-time';
-      itemTime.textContent = ev.start?.dateTime ? `⏱️ Ora: ${new Date(ev.start.dateTime).toLocaleTimeString('it-IT', {hour:'2-digit', minute:'2-digit'})}` : '📅 Blocco Intero Giorno';
+      itemTime.textContent = ev.start?.dateTime ? `⏱️ Ore: ${new Date(ev.start.dateTime).toLocaleTimeString('it-IT', {hour:'2-digit', minute:'2-digit'})}` : '📅 Intero Giorno';
 
       details.appendChild(itemTitle); details.appendChild(itemTime);
 
@@ -670,7 +655,7 @@
     $('fitProgressBar').style.width = '0%'; $('fitPctLabel').textContent = '0%';
     $('persProgressBar').style.width = '0%'; $('persPctLabel').textContent = '0%';
     $('totalFinanceAmount').textContent = '0,00 €';
-    $('financeItemsContainer').innerHTML = '<p class="no-events-text">Nessun pagamento rilevato.</p>';
+    financeContainer.innerHTML = '<p class="no-events-text">Nessun pagamento rilevato.</p>';
     $('agendaItemsContainer').innerHTML = '<p class="no-events-text">Nessuna attività mappata.</p>';
   }
 
@@ -708,7 +693,6 @@
   $('viewWeekBtn').addEventListener('click', () => switchView('week', 'viewWeekBtn'));
   $('viewAgendaBtn').addEventListener('click', () => switchView('agenda', 'viewAgendaBtn'));
 
-  let today = new Date();
   $('prevMonth').addEventListener('click', () => {
     if (currentView === 'week') {
       const dt = new Date(viewYear, viewMonth, selectedDay - 7); selectedDay = dt.getDate(); viewMonth = dt.getMonth(); viewYear = dt.getFullYear();
