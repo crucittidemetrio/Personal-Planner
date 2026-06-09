@@ -139,7 +139,21 @@
   .event-pill.fitness { border-left-color: var(--c-fit); background: var(--c-fit-soft); color: var(--c-fit); }
   .event-pill.food { border-left-color: var(--c-food); background: var(--c-food-soft); color: var(--c-food); }
   .event-pill.personal { border-left-color: var(--c-pers); background: var(--c-pers-soft); color: var(--c-pers); }
-  .event-pill.finance { border-left-color: var(--c-finance); background: var(--c-finance-soft); color: var(--c-finance); font-weight: 500; }
+  ```css
+  /* Stile potenziato per le scadenze economiche */
+  .event-pill.finance { 
+    border-left: 3px solid #ff7043; 
+    background: rgba(255, 112, 67, 0.25); 
+    color: #ffffff; 
+    font-weight: 600; 
+    border: 1px solid rgba(255, 112, 67, 0.5);
+    box-shadow: 0 2px 8px rgba(255, 112, 67, 0.15);
+  }
+  
+  /* Aggiunge in automatico l'icona davanti al testo della pillola */
+  .event-pill.finance::before {
+    content: '💸 ';
+  }
   
   .week-day-column .event-pill { position: relative; margin-bottom: 2px; white-space: normal; min-height: 32px; display: flex; flex-direction: column; justify-content: center; }
 
