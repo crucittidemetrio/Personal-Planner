@@ -399,7 +399,8 @@
   // ===== AUTH LAYER =====
   loginBtn.addEventListener('click', () => {
     if (!gapiReady || !gisReady) return showStatus('Sistemi Google non pronti.', 'error');
-    tokenClient.requestAccessToken({ prompt: accessToken ? '' : 'consent' });
+    // Forziamo esplicitamente Google a mostrare sempre la schermata dei permessi
+    tokenClient.requestAccessToken({ prompt: 'consent' });
   });
   logoutBtn.addEventListener('click', () => {
     if (accessToken) google.accounts.oauth2.revoke(accessToken, () => {});
