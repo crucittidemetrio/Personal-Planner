@@ -633,11 +633,21 @@
     return '';
   }
 
+  // ===== ESTRATTORE MATEMATICO DEL BUDGET (Ottimizzato IT) =====
   function extractAmount(title) {
-    const match = title.match(/(\d+[\.,]?\d*)\s*€|€\s*(\d+[\.,]?\d*)/);
+    // 1. Cerca il simbolo € seguito/preceduto da numeri, punti e virgole
+    const match = title.match(/€\s*([\d\.,]+)|([\d\.,]+)\s*€/);
     if (match) {
-      const numStr = match[1] || match[2];
-      return parseFloat(numStr.replace(',', '.'));
+      let numStr = match[1] || match[2];
+      
+      // 2. Elimina i punti delle migliaia (es. 1.000,00 diventa 1000,00)
+      numStr = numStr.replace(/\./g, '');
+      
+      // 3. Trasforma la virgola decimale in punto per la logica JS (es. 1000,00 diventa 1000.00)
+      numStr = numStr.replace(',', '.');
+      
+      // 4. Converte la stringa pulita in un vero numero matematico
+      return parseFloat(numStr) || 0;
     }
     return 0;
   }
