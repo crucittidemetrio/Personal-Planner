@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Personal Planner OS - Themes & Finance</title>
+<title>Personal Planner OS - Tasks & Finance</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -37,29 +37,17 @@
   }
   
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased; overflow-x: hidden; transition: background 0.4s ease, body::before 0.4s ease;}
+  html,body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased; overflow-x: hidden; transition: background 0.4s ease;}
   
-  /* SFONDO 1: MIDNIGHT (Default) */
+  /* SFONDI */
   body{padding:16px; background: radial-gradient(1200px 600px at 50% -10%, rgba(197,151,121,0.05), transparent 70%), var(--bg);}
-  
-  /* SFONDO 2: DEEP SPACE */
   body.theme-space {
-    --bg: #050510;
-    --card: #0c0d1a;
-    --card-2: #121428;
-    --border: #1e2246;
+    --bg: #050510; --card: #0c0d1a; --card-2: #121428; --border: #1e2246;
     background: radial-gradient(1200px 600px at 50% -10%, rgba(186,104,200,0.08), transparent 70%), var(--bg);
   }
-
-  /* SFONDO 3: CYBERPUNK */
   body.theme-cyber {
-    --bg: #000000;
-    --card: #0d0d0d;
-    --card-2: #141414;
-    --border: #262626;
-    --accent: #00f0ff;
-    --accent-strong: #00ffff;
-    --accent-soft: rgba(0,240,255,0.1);
+    --bg: #000000; --card: #0d0d0d; --card-2: #141414; --border: #262626;
+    --accent: #00f0ff; --accent-strong: #00ffff; --accent-soft: rgba(0,240,255,0.1);
     background: radial-gradient(1200px 600px at 50% -10%, rgba(0,240,255,0.05), transparent 70%), var(--bg);
   }
   
@@ -98,7 +86,7 @@
   .btn-icon{padding:8px 12px;background:var(--card);color:var(--text);border:1px solid var(--border)}
 
   /* GRID RESPONSIVE */
-  .main-grid{display:grid;grid-template-columns:1fr 360px;gap:18px; width:100%;}
+  .main-grid{display:grid;grid-template-columns:1fr 380px;gap:18px; width:100%;}
   @media (max-width:1150px){.main-grid{grid-template-columns:1fr}}
 
   /* Calendari Principali */
@@ -108,7 +96,7 @@
   .cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap;}
   .cal-header h3{font-size:20px;font-weight:600;letter-spacing:-.02em;text-transform:capitalize}
   .cal-controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
-  .cal-nav, .view-switcher{display:flex;gap:4px;background:var(--card-2);padding:4px;border-radius:var(--radius-sm);border:1px solid var(--border); transition: background 0.4s ease;}
+  .cal-nav, .view-switcher{display:flex;gap:4px;background:var(--card-2);padding:4px;border-radius:var(--radius-sm);border:1px solid var(--border);}
   .view-switcher .btn { padding: 6px 12px; font-size: 12px; }
 
   .weekdays{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:6px}
@@ -139,21 +127,12 @@
   .event-pill.fitness { border-left-color: var(--c-fit); background: var(--c-fit-soft); color: var(--c-fit); }
   .event-pill.food { border-left-color: var(--c-food); background: var(--c-food-soft); color: var(--c-food); }
   .event-pill.personal { border-left-color: var(--c-pers); background: var(--c-pers-soft); color: var(--c-pers); }
-  ```css
-  /* Stile potenziato per le scadenze economiche */
-  .event-pill.finance { 
-    border-left: 3px solid #ff7043; 
-    background: rgba(255, 112, 67, 0.25); 
-    color: #ffffff; 
-    font-weight: 600; 
-    border: 1px solid rgba(255, 112, 67, 0.5);
-    box-shadow: 0 2px 8px rgba(255, 112, 67, 0.15);
-  }
   
-  /* Aggiunge in automatico l'icona davanti al testo della pillola */
-  .event-pill.finance::before {
-    content: '💸 ';
+  .event-pill.finance { 
+    border-left: 3px solid #ff7043; background: rgba(255, 112, 67, 0.25); color: #ffffff; font-weight: 600; 
+    border: 1px solid rgba(255, 112, 67, 0.4); box-shadow: 0 2px 6px rgba(255, 112, 67, 0.15);
   }
+  .event-pill.finance::before { content: '💸 '; }
   
   .week-day-column .event-pill { position: relative; margin-bottom: 2px; white-space: normal; min-height: 32px; display: flex; flex-direction: column; justify-content: center; }
 
@@ -171,16 +150,25 @@
   .form-group input{ background:var(--card-2);border:1px solid var(--border);color:var(--text);padding:9px 12px;border-radius:var(--radius-sm);font-family:inherit;font-size:13px;transition:border-color .15s ease;color-scheme:dark; }
   .form-group input:focus{ outline:none;border-color:var(--accent) }
   
-  /* Liste Interne / Box Giornalieri */
-  .agenda-section, .finance-section { background: var(--card-2); border-radius: var(--radius-sm); padding: 12px; margin-top: 4px; display: flex; flex-direction: column; gap: 8px; border: 1px solid var(--border); }
+  /* Sezioni Liste Esterne Sidebar */
+  .agenda-section, .finance-section, .todo-section { background: var(--card-2); border-radius: var(--radius-sm); padding: 12px; margin-top: 4px; display: flex; flex-direction: column; gap: 8px; border: 1px solid var(--border); }
   .finance-section { border-color: rgba(255,112,67,0.15); background: linear-gradient(180deg, rgba(255,112,67,0.02), var(--card-2)); }
+  .todo-section { border-color: rgba(77,182,172,0.15); background: linear-gradient(180deg, rgba(77,182,172,0.02), var(--card-2)); }
   .agenda-title { font-size: 12px; font-weight: 600; color: var(--text); display: flex; justify-content: space-between; }
+  
   .agenda-item { display: flex; align-items: center; justify-content: space-between; background: var(--card); padding: 8px; border-radius: 6px; border: 1px solid var(--border); gap: 10px;}
   .agenda-item-details { display: flex; flex-direction: column; min-width: 0; flex: 1; }
   .agenda-item-title { font-size: 12px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; cursor: pointer; }
+  .agenda-item-title.completed { text-decoration: line-through; color: var(--text-dim); opacity: 0.6; }
   .agenda-item-title:hover { color: var(--accent); }
   .agenda-item-time { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
   .no-events-text { font-size: 12px; color: var(--text-dim); font-style: italic; text-align: center; padding: 8px 0; }
+
+  /* Input ToDo */
+  .todo-input-group { display: flex; gap: 6px; margin-top: 2px; }
+  .todo-input-group input { flex: 1; background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 6px 10px; color: var(--text); font-family: inherit; font-size: 12px; }
+  .todo-input-group input:focus { outline: none; border-color: var(--success); }
+  .todo-checkbox { width: 14px; height: 14px; cursor: pointer; accent-color: var(--success); }
 
   /* Live Analytics & Widgets Finanziari */
   .metrics-card { display: flex; flex-direction: column; gap: 12px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
@@ -214,7 +202,7 @@
       <div class="logo">Ω</div>
       <div>
         <h1>Personal Planner OS</h1>
-        <div class="sub">Life Balance & Finance Management synchronized with Google Calendar</div>
+        <div class="sub">Life Balance, Finances & Google Tasks Complete Engine</div>
       </div>
     </div>
     
@@ -290,6 +278,19 @@
             <button id="cancelEditBtn" class="btn btn-ghost hidden" style="padding:10px;">Annulla</button>
           </div>
           
+          <div class="todo-section">
+            <div class="agenda-title" style="color: var(--success)">
+              <span>📋 Google Tasks To-Do List</span>
+            </div>
+            <div id="todoItemsContainer">
+              <p class="no-events-text">Connetti Google per caricare i Task.</p>
+            </div>
+            <div class="todo-input-group">
+              <input type="text" id="newTodoInput" placeholder="Aggiungi una nuova attività..." disabled/>
+              <button id="addTodoBtn" class="btn btn-primary" style="padding:6px 10px; background:var(--success); color:#000;" disabled>+</button>
+            </div>
+          </div>
+
           <div class="finance-section">
             <div class="agenda-title" style="color: var(--c-finance)">
               <span>💸 Scadenze Economiche Mese</span>
@@ -314,7 +315,7 @@
 
         <div id="lockedOverlay" class="locked-overlay hidden">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-          <p>L'algoritmo richiede l'accesso a Google Calendar per processare la timeline finanziaria e di produttività.</p>
+          <p>L'algoritmo richiede l'accesso a Google per processare la timeline e i tuoi Task.</p>
         </div>
       </aside>
 
@@ -359,13 +360,16 @@
 <script>
   // ===== CONFIG =====
   const CLIENT_ID = '7642810548-nsn60e5bnkne6fr4nnm8o5o51vtpreaa.apps.googleusercontent.com';
-  const SCOPES = 'https://www.googleapis.com/auth/calendar.events https://www.googleapis.com/auth/userinfo.email';
-  const DISCOVERY = 'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest';
+  const SCOPES = 'https://www.googleapis.com/auth/calendar.events https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/tasks';
+  const DISCOVERY_DOCS = [
+    'https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest',
+    'https://www.googleapis.com/discovery/v1/apis/tasks/v1/rest'
+  ];
 
   // ===== STATE =====
   let tokenClient = null, gapiReady = false, gisReady = false, accessToken = null, tokenExpiry = 0;
   let currentDate = new Date(), viewYear = currentDate.getFullYear(), viewMonth = currentDate.getMonth(), selectedDay = currentDate.getDate();
-  let events = [], currentView = 'month', editingEventId = null;
+  let events = [], currentView = 'month', editingEventId = null, currentTaskListId = '@default';
 
   // ===== DOM =====
   const $ = (id) => document.getElementById(id);
@@ -375,7 +379,10 @@
   // ===== GOOGLE API BOOT =====
   function gapiLoad(){
     gapi.load('client', async () => {
-      try { await gapi.client.init({ discoveryDocs: [DISCOVERY] }); gapiReady = true; } 
+      try { 
+        await gapi.client.init({ discoveryDocs: DISCOVERY_DOCS }); 
+        gapiReady = true; 
+      } 
       catch(e){ showStatus('GAPI Error: ' + e.message, 'error'); }
     });
   }
@@ -406,20 +413,25 @@
       const r = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', { headers: { Authorization: 'Bearer ' + accessToken } });
       if (r.ok) userEmail.textContent = (await r.json()).email || 'Connesso';
     } catch { userEmail.textContent = 'Connesso'; }
-    setLoggedInUI(); await loadAndRenderEvents();
+    setLoggedInUI(); 
+    await loadAndRenderEvents();
+    await loadGoogleTasks();
   }
   function setLoggedInUI(){
     loginBtn.classList.add('hidden'); userInfo.classList.add('visible');
     formContent.classList.remove('hidden'); lockedOverlay.classList.add('hidden');
     saveBtn.disabled = false; saveBtnText.textContent = 'Sincronizza Evento';
+    $('newTodoInput').disabled = false; $('addTodoBtn').disabled = false;
   }
   function setLoggedOutUI(){
     loginBtn.classList.remove('hidden'); userInfo.classList.remove('visible');
-    saveBtn.disabled = true; saveBtnText.textContent = 'In attesa di connessione'; resetForm();
+    saveBtn.disabled = true; saveBtnText.textContent = 'In attesa di connessione'; 
+    $('newTodoInput').disabled = true; $('addTodoBtn').disabled = true;
+    resetForm();
   }
   function ensureValidToken(){ if (!accessToken || Date.now() > tokenExpiry - 30_000){ setLoggedOutUI(); return false; } return true; }
 
-  // ===== FETCH DATA =====
+  // ===== FETCH DATA (CALENDAR) =====
   async function loadAndRenderEvents(){
     if (!accessToken) { events = []; renderCalendar(); return; }
     if (!ensureValidToken()) return;
@@ -432,7 +444,121 @@
     } catch(e){ showStatus('Errore scaricamento dati Cloud.', 'error'); }
   }
 
-  // ===== MOTORE DI CATEGORIZZAZIONE AVANZATO =====
+  // ===== ENGINE SINCRONIZZAZIONE GOOGLE TASKS =====
+  async function loadGoogleTasks() {
+    if (!accessToken || !ensureValidToken()) return;
+    try {
+      const resp = await gapi.client.tasks.tasks.list({
+        tasklist: currentTaskListId,
+        maxResults: 50,
+        showCompleted: true,
+        showHidden: true
+      });
+      renderTasksList(resp.result.items || []);
+    } catch (e) {
+      $('todoItemsContainer').innerHTML = '<p class="no-events-text" style="color:var(--danger)">Impossibile caricare i Task.</p>';
+    }
+  }
+
+  function renderTasksList(tasksList) {
+    const container = $('todoItemsContainer');
+    container.innerHTML = '';
+
+    if (tasksList.length === 0) {
+      container.innerHTML = '<p class="no-events-text">Nessuna attività in lista.</p>';
+      return;
+    }
+
+    // Ordina mettendo prima i non completati
+    tasksList.sort((a, b) => (a.status === 'completed') - (b.status === 'completed'));
+
+    tasksList.forEach(task => {
+      const isCompleted = task.status === 'completed';
+
+      const item = document.createElement('div');
+      item.className = 'agenda-item';
+      item.style.borderLeft = `3px solid ${isCompleted ? 'var(--text-dim)' : 'var(--success)'}`;
+
+      // Checkbox per completamento rapido
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.className = 'todo-checkbox';
+      checkbox.checked = isCompleted;
+      checkbox.addEventListener('change', () => toggleTaskStatus(task.id, checkbox.checked));
+
+      const details = document.createElement('div');
+      details.className = 'agenda-item-details';
+      details.style.paddingLeft = '6px';
+
+      const title = document.createElement('span');
+      title.className = 'agenda-item-title' + (isCompleted ? ' completed' : '');
+      title.textContent = task.title || '(Nessun testo)';
+
+      details.appendChild(title);
+
+      // Pulsante di eliminazione avanzata
+      const delBtn = document.createElement('button');
+      delBtn.className = 'btn btn-danger-ghost';
+      delBtn.style.padding = '4px 8px';
+      delBtn.style.fontSize = '11px';
+      delBtn.textContent = 'Elimina';
+      delBtn.addEventListener('click', () => deleteGoogleTask(task.id));
+
+      item.appendChild(checkbox);
+      item.appendChild(details);
+      item.appendChild(delBtn);
+      container.appendChild(item);
+    });
+  }
+
+  // Aggiunta Nuovo Task su Google
+  $('addTodoBtn').addEventListener('click', async () => {
+    const text = $('newTodoInput').value.trim();
+    if (!text) return;
+    if (!ensureValidToken()) return;
+
+    try {
+      await gapi.client.tasks.tasks.insert({
+        tasklist: currentTaskListId,
+        resource: { title: text }
+      });
+      $('newTodoInput').value = '';
+      showStatus('Attività aggiunta su Google Tasks!', 'success');
+      await loadGoogleTasks();
+    } catch(e) { showStatus('Errore aggiunta task.', 'error'); }
+  });
+
+  // Cambio stato Completato / Non completato
+  async function toggleTaskStatus(taskId, completed) {
+    if (!ensureValidToken()) return;
+    try {
+      await gapi.client.tasks.tasks.update({
+        tasklist: currentTaskListId,
+        task: taskId,
+        resource: {
+          id: taskId,
+          status: completed ? 'completed' : 'needsAction'
+        }
+      });
+      await loadGoogleTasks();
+    } catch(e) { showStatus('Errore aggiornamento task.', 'error'); }
+  }
+
+  // Eliminazione definitiva Task
+  async function deleteGoogleTask(taskId) {
+    if (!confirm('Vuoi eliminare questa attività da Google Tasks?')) return;
+    if (!ensureValidToken()) return;
+    try {
+      await gapi.client.tasks.tasks.delete({
+        tasklist: currentTaskListId,
+        task: taskId
+      });
+      showStatus('Attività eliminata con successo.', 'success');
+      await loadGoogleTasks();
+    } catch(e) { showStatus('Errore rimozione task.', 'error'); }
+  }
+
+  // ===== CATEGORIZZAZIONE CALENDARIO =====
   function getPillClass(title) {
     const t = title.toLowerCase();
     if (t.includes('€') || t.includes('euro') || t.includes('pagamento') || t.includes('bolletta') || t.includes('scadenza')) return 'finance';
@@ -443,7 +569,6 @@
     return '';
   }
 
-  // ===== ESTRATTORE MATEMATICO DEL BUDGET =====
   function extractAmount(title) {
     const match = title.match(/(\d+[\.,]?\d*)\s*€|€\s*(\d+[\.,]?\d*)/);
     if (match) {
@@ -453,9 +578,7 @@
     return 0;
   }
 
-  // ===== RENDER LOGIC =====
-  const MONTH_NAMES_IT = ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
-
+  // ===== RENDER CALENDAR LOGIC =====
   function renderCalendar(){
     const grid = $('daysGrid'), header = $('weekdaysHeader');
     grid.innerHTML = ''; grid.className = 'days-grid'; header.classList.remove('hidden');
@@ -702,8 +825,6 @@
     $('fitProgressBar').style.width = '0%'; $('fitPctLabel').textContent = '0%';
     $('persProgressBar').style.width = '0%'; $('persPctLabel').textContent = '0%';
     $('totalFinanceAmount').textContent = '0,00 €';
-    financeContainer.innerHTML = '<p class="no-events-text">Nessun pagamento rilevato.</p>';
-    $('agendaItemsContainer').innerHTML = '<p class="no-events-text">Nessuna attività mappata.</p>';
   }
 
   // ===== WRITING / SYNC LOGIC =====
@@ -759,20 +880,19 @@
 
   function showStatus(msg, type){ statusEl.textContent = msg; statusEl.className = 'status visible ' + (type || 'info'); if (type === 'success'){ setTimeout(() => statusEl.classList.remove('visible'), 4000); } }
 
-  // ===== EXCLUSIVE GESTORE CAMBIO SFONDO IN TIME REAL =====
+  // ===== EXCLUSIVE GESTORE THEMES =====
   const setBackgroundTheme = (themeClass, activeBtnId) => {
-    document.body.className = ''; // Pulisce le classi attuali
+    document.body.className = '';
     if(themeClass) document.body.classList.add(themeClass);
-    
     document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
     $(activeBtnId).classList.add('active');
   };
-
   $('themeMidnight').addEventListener('click', () => setBackgroundTheme('', 'themeMidnight'));
   $('themeSpace').addEventListener('click', () => setBackgroundTheme('theme-space', 'themeSpace'));
   $('themeCyber').addEventListener('click', () => setBackgroundTheme('theme-cyber', 'themeCyber'));
 
   // ===== INITIALIZATION =====
+  const MONTH_NAMES_IT = ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'];
   (function init(){
     $('eventDate').value = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
     renderCalendar();
