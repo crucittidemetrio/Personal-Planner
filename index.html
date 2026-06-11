@@ -633,20 +633,20 @@
     return '';
   }
 
-  // ===== ESTRATTORE MATEMATICO DEL BUDGET (Ottimizzato IT) =====
+// ===== ESTRATTORE MATEMATICO DEL BUDGET (Corretto per formato IT) =====
   function extractAmount(title) {
     // 1. Cerca il simbolo € seguito/preceduto da numeri, punti e virgole
     const match = title.match(/€\s*([\d\.,]+)|([\d\.,]+)\s*€/);
     if (match) {
       let numStr = match[1] || match[2];
       
-      // 2. Elimina i punti delle migliaia (es. 1.000,00 diventa 1000,00)
+      // 2. Rimuoviamo i punti (migliaia). Esempio: "1.000,00" -> "1000,00"
       numStr = numStr.replace(/\./g, '');
       
-      // 3. Trasforma la virgola decimale in punto per la logica JS (es. 1000,00 diventa 1000.00)
+      // 3. Sostituiamo la virgola con il punto decimale. Esempio: "1000,00" -> "1000.00"
       numStr = numStr.replace(',', '.');
       
-      // 4. Converte la stringa pulita in un vero numero matematico
+      // 4. Ora parseFloat leggerà correttamente 1000.00
       return parseFloat(numStr) || 0;
     }
     return 0;
